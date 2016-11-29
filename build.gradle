@@ -1,0 +1,35 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '1.2.4'
+    id 'application'
+    id 'java'
+    id 'idea'
+}
+
+
+group 'com.findv'
+version '0.1'
+mainClassName = "com.findv.metro2v.Main"
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$GradleVersion-all.zip"
+}
+
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes("Main-Class": "com.findv.metro2v.Main",
+                "Implementation-Title": "Gradle")
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'com.google.code.gson:gson:2.8.0'
+}
